@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
+import { LanguageSwitcher } from "./language-swticher";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -75,11 +76,16 @@ export function Navbar() {
         </nav>
 
         {/* Desktop CTA */}
-        <Link href="/#contact" className="hidden md:flex gap-4">
-          <Button className="bg-white text-color-2 hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-color-1/20">
-            Get Started
-          </Button>
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link href="/#contact" className="hidden md:flex gap-4">
+            <Button className="bg-white text-color-2 hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-color-1/20">
+              Get Started
+            </Button>
+          </Link>
+          <div className="hidden md:flex">
+            <LanguageSwitcher />
+          </div>
+        </div>
 
         {/* Mobile Menu Toggle */}
         <button
@@ -114,12 +120,13 @@ export function Navbar() {
                 </Link>
               </div>
             ))}
-            <div>
-              {/* <Link href="/#contact" onClick={() => setIsMenuOpen(false)}> */}
+            <div className="space-y-3">
               <Button className="w-full bg-color-1 text-white hover:bg-color-1/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-color-1/20">
                 Get Started
               </Button>
-              {/* </Link> */}
+              <div className="">
+                <LanguageSwitcher />
+              </div>
             </div>
           </nav>
         </motion.div>

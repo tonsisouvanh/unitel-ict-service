@@ -19,14 +19,14 @@ export default function ClientLayout({
   }, []);
   return (
     <div className="relative flex min-h-screen flex-col">
-      <Script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></Script>
+      {/* <Script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></Script>
 
       <link
         rel="stylesheet"
         type="text/css"
         href="https://www.gstatic.com/_/translate_http/_/ss/k=translate_http.tr.26tY-h6gH9w.L.W.O/am=CAM/d=0/rs=AN8SPfpIXxhebB2A47D9J-MACsXmFF6Vew/m=el_main_css"
-      />
-      <div
+      /> */}
+      {/* <div
         id="google_translate_element"
         style={{
           position: "fixed",
@@ -39,7 +39,7 @@ export default function ClientLayout({
           padding: "5px",
           fontSize: "5px",
         }}
-      ></div>
+      ></div> */}
       <Navbar />
       <main>{children}</main>
       <Footer />
