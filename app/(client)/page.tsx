@@ -9,11 +9,12 @@ import { TechnologiesSection } from "@/components/section/technologies-section";
 import { TestimonialsSection } from "@/components/section/testimonials-section";
 import { WorkProcessSection } from "@/components/section/work-process-section";
 import { ParticlesBackground } from "@/components/ui/particles-background";
+import { Suspense } from "react";
 
 export default async function HomePage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between relative overflow-hidden">
-      {/* <Suspense
+      <Suspense
         fallback={
           <div className="flex min-h-screen items-center justify-center">
             <div className="flex flex-row gap-2">
@@ -23,20 +24,20 @@ export default async function HomePage() {
             </div>
           </div>
         }
-      > */}
-      <ParticlesBackground />
-      <HeroSection />
-      <ServicesSection />
-      <ServiceShowcase />
-      <AboutSection />
-      <TechnologiesSection />
-      <WorkProcessSection />
-      <PortfolioSection />
-      <PartnersSection />
-      <TestimonialsSection />
-      {/* <BlogSection /> */}
-      <ContactSection />
-      {/* </Suspense> */}
+      >
+        <ParticlesBackground />
+        <HeroSection />
+        <ServicesSection />
+        <ServiceShowcase />
+        <AboutSection />
+        <TechnologiesSection />
+        <WorkProcessSection />
+        <PortfolioSection />
+        <PartnersSection />
+        <TestimonialsSection />
+        {/* <BlogSection /> */}
+        <ContactSection />
+      </Suspense>
     </main>
   );
 }

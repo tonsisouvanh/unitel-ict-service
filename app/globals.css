@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap");
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -48,6 +50,9 @@
 }
 
 :root {
+  font-family: "Oxanium", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
