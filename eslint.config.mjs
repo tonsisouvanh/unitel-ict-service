@@ -18,7 +18,8 @@ const eslintConfig = [
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/ban-ts-comment": "off",
       "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": "of",
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/no-namespace": "off",
     },
   },
 ];

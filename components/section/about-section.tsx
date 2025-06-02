@@ -72,7 +72,8 @@ export function AboutSection() {
         <CompanyHistory className="hidden" inView={inView} />
 
         {/* Team Section */}
-        <Teams inView={inView} />
+        {/* <Teams inView={inView} /> */}
+
         {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

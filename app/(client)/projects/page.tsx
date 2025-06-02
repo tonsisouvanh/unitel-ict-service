@@ -1,9 +1,11 @@
 import React from "react";
 
-type Props = {};
-
-function ProjectsPage({}: Props) {
-  return <div>ProjectsPage</div>;
+function ProjectsPage() {
+  return (
+    <div className="flex min-h-screen items-center justify-center">
+      ProjectsPage
+    </div>
+  );
 }
 
 export default ProjectsPage;

@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title:
-    "Unitel | Software Development, Digital Infrastructure, Cyber security",
+    "Unitel | ICT Services: Software Development, Digital Infrastructure, Cyber security",
   description:
     "Unitel offers comprehensive solutions in software development, digital infrastructure, and cybersecurity. We build robust software, design scalable digital foundations, and secure your digital assets.",
   icons: {
@@ -26,13 +26,13 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title:
-      "Unitel | Software Development, Digital Infrastructure, Cyber security",
+      "Unitel | ICT Services: Software Development, Digital Infrastructure, Cyber security",
     description:
       "Unitel offers comprehensive solutions in software development, digital infrastructure, and cybersecurity. We build robust software, design scalable digital foundations, and secure your digital assets.",
-    url: "https://unitel-dev.netlify.app",
+    url: `${process.env.NEXT_PUBLIC_DOMAIN}`,
     images: [
       {
-        url: "https://unitel-dev.netlify.app/assets/images/cover.png",
+        url: `${process.env.NEXT_PUBLIC_DOMAIN}/assets/images/cover.jpg`,
         width: 1200,
         height: 630,
         alt: "Unitel It service",
@@ -42,10 +42,10 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "Unitel | Software Development, Digital Infrastructure, Cyber security",
+      "Unitel | ICT Services: Software Development, Digital Infrastructure, Cyber security",
     description:
       "Unitel offers comprehensive solutions in software development, digital infrastructure, and cybersecurity. We build robust software, design scalable digital foundations, and secure your digital assets.",
-    images: ["https://unitel-dev.netlify.app/assets/images/cover.png"],
+    images: [`${process.env.NEXT_PUBLIC_DOMAIN}/assets/images/cover.jpg`],
   },
 };
 

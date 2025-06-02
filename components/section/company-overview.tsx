@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
+import Image from "next/image";
 
 type Props = {
   inView: boolean;
@@ -21,7 +22,9 @@ const CompanyOverview = ({ className, inView }: Props) => {
         className={cn("relative", className)}
       >
         <div className="relative h-[400px] w-full overflow-hidden rounded-2xl shadow-xl">
-          <img
+          <Image
+            width={500}
+            height={500}
             src={"/assets/images/unitel-building.jpg"}
             alt="Our Team"
             className="object-cover w-full h-full "

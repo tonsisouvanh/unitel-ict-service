@@ -4,6 +4,7 @@ import ServicesList from "./services-list";
 import TermsList from "./term-list";
 import PressList from "./press-list";
 import Link from "next/link";
+import Image from "next/image";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -11,10 +12,12 @@ export function Footer() {
   return (
     <footer className="w-full relative bg-[#F5F5F5] dark:bg-gray-900 pt-16 overflow-hidden">
       <div className="absolute bottom-0 right-0 w-72 opacity-10 h-auto">
-        <img
+        <Image
           src="/assets/images/logo-no-text.png"
           className="object-cover w-full h-full"
           alt=""
+          width={100}
+          height={100}
         />
       </div>
       {/* Wave SVG at the top */}
@@ -42,10 +45,12 @@ export function Footer() {
             className="space-y-4"
           >
             <Link href="/" className="flex items-center gap-2">
-              <img
+              <Image
                 src="/assets/images/logo-full.jpg"
                 className="w-auto h-24"
                 alt=""
+                width={200}
+                height={200}
               />
             </Link>
             <div className="flex space-x-4">

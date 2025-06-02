@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { LanguageSwitcher } from "./language-swticher";
+import Image from "next/image";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -50,10 +51,12 @@ export function Navbar() {
       <div className="container flex h-16 items-center justify-between px-4 md:px-6">
         <Link href="/#hero" className="flex items-center gap-2">
           <motion.div className="w-[50px] h-[50px]">
-            <img
+            <Image
               src="/assets/images/logo-white-bg.png"
               alt="Unitel logo"
               className="object-cover w-full h-full"
+              width={500}
+              height={500}
             />
           </motion.div>
         </Link>

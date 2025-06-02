@@ -1,10 +1,13 @@
 import { motion } from "motion/react";
+import Image from "next/image";
 
 export function BlogHeader() {
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 bg-color-1 relative overflow-hidden">
-      <img
+      <Image
         className="absolute inset-0 opacity-10 w-full h-full object-cover"
+        width={500}
+        height={500}
         src="/assets/images/blog-header-bg.jpg"
         alt=""
       />

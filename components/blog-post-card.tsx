@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import Link from "next/link";
+import Image from "next/image";
 
 interface BlogPostCardProps {
   post: {
@@ -28,8 +29,10 @@ export function BlogPostCard({ post, featured = false }: BlogPostCardProps) {
     >
       <div className={`relative ${featured ? "lg:w-1/2" : ""}`}>
         <div className="relative h-60 w-full overflow-hidden">
-          <img
+          <Image
             src={"/assets/images/blog-card-placeholder.jpg"}
+            width={500}
+            height={500}
             alt={post.title}
             className="object-cover transition-transform duration-500 hover:scale-110"
           />

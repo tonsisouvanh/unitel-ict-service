@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface BlogPostDetailProps {
   post: {
@@ -74,10 +75,12 @@ export function BlogPostDetail({ post }: BlogPostDetailProps) {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="mb-10 overflow-hidden rounded-lg shadow-lg"
             >
-              <img
+              <Image
                 src={post.image || "/placeholder.svg"}
                 alt={post.title}
                 className="w-full object-cover"
+                width={500}
+                height={500}
               />
             </motion.div>
 

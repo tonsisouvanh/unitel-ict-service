@@ -118,7 +118,9 @@ export function ServicesSection() {
       ref={ref}
       className="w-full relative py-12 md:py-24 lg:py-32 px-3 bg-white"
     >
-      <img
+      <Image
+        width={500}
+        height={500}
         className="absolute top-0 right-0 w-full h-full object-cover opacity-20"
         src="/assets/images/polygon.png"
         alt=""
@@ -161,6 +163,7 @@ export function ServicesSection() {
                   alt={service.title}
                   width={500}
                   height={500}
+                  priority
                   className="object-cover w-full h-full"
                 />
               </div>

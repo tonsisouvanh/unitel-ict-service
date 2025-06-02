@@ -1,9 +1,7 @@
 import ProjectDetail from "@/components/project/project-detail";
 import React from "react";
 
-type Props = {};
-
-const ProjectDetailPage = (props: Props) => {
+const ProjectDetailPage = () => {
   return (
     <div>
       <ProjectDetail />

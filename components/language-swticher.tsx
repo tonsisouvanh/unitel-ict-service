@@ -1,7 +1,6 @@
 "use client";
-import { useEffect, useState } from "react";
 import { parseCookies, setCookie } from "nookies";
-import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const COOKIE_NAME = "googtrans";
 
@@ -10,9 +9,10 @@ interface LanguageDescriptor {
   title: string;
 }
 
+// Extend the Window interface for client-side access
 declare global {
-  namespace globalThis {
-    var __GOOGLE_TRANSLATION_CONFIG__: {
+  interface Window {
+    __GOOGLE_TRANSLATION_CONFIG__?: {
       languages: LanguageDescriptor[];
       defaultLanguage: string;
     };
@@ -38,16 +38,18 @@ const LanguageSwitcher = () => {
       }
     }
 
-    if (global.__GOOGLE_TRANSLATION_CONFIG__ && !languageValue) {
-      languageValue = global.__GOOGLE_TRANSLATION_CONFIG__.defaultLanguage;
+    // Access window.__GOOGLE_TRANSLATION_CONFIG__ instead of global.__GOOGLE_TRANSLATION_CONFIG__
+    if (window.__GOOGLE_TRANSLATION_CONFIG__ && !languageValue) {
+      languageValue = window.__GOOGLE_TRANSLATION_CONFIG__.defaultLanguage;
     }
 
     if (languageValue) {
       setCurrentLanguage(languageValue);
     }
 
-    if (global.__GOOGLE_TRANSLATION_CONFIG__) {
-      setLanguageConfig(global.__GOOGLE_TRANSLATION_CONFIG__);
+    if (window.__GOOGLE_TRANSLATION_CONFIG__) {
+      // Access window here too
+      setLanguageConfig(window.__GOOGLE_TRANSLATION_CONFIG__);
     }
   }, []);
 
@@ -56,6 +58,7 @@ const LanguageSwitcher = () => {
     window.location.reload();
   };
 
+  // Render nothing if config or current language isn't set yet
   if (!currentLanguage || !languageConfig) return null;
 
   return (
@@ -97,4 +100,4 @@ const LanguageSwitcher = () => {
   );
 };
 
-export { LanguageSwitcher, COOKIE_NAME };
+export { COOKIE_NAME, LanguageSwitcher };

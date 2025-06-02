@@ -184,7 +184,7 @@ export function PartnersSection() {
                             alt={`${partner.name} logo`}
                             width={240}
                             height={120}
-                            className="object-contain max-h-full transition-transform duration-300"
+                            className="object-contain max-h-full w-full transition-transform duration-300"
                             style={{
                               transform:
                                 hoveredPartnerId === partner.id && !isMobile

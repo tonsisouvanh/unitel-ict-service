@@ -138,7 +138,7 @@ export function ServiceShowcase() {
                       width={500}
                       height={500}
                       quality={100}
-                      className="object-fill w-full h-full bg-white"
+                      className="object-fill max-sm:object-contain w-full h-full bg-white"
                     />
                     {/* <div className="absolute inset-0 bg-gradient-to-tr from-color-1/10 to-transparent"></div> */}
                   </div>

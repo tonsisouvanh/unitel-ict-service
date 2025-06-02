@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "motion/react";
 import { ProjectImage, ProjectVideo } from "@/lib/projects";
+import Image from "next/image";
 
 interface ProjectGalleryProps {
   images: ProjectImage[];
@@ -49,14 +50,18 @@ export function ProjectGallery({ images, videos = [] }: ProjectGalleryProps) {
             onClick={() => openLightbox(index)}
           >
             {media.type === "image" ? (
-              <img
+              <Image
+                width={200}
+                height={200}
                 src={media.data.src || "/placeholder.svg"}
                 alt={media.data.alt}
                 className="object-cover"
               />
             ) : (
               <div className="relative w-full h-full">
-                <img
+                <Image
+                  width={200}
+                  height={200}
                   src={
                     media.data.poster ||
                     "/placeholder.svg?height=400&width=700&text=Video"
@@ -130,7 +135,7 @@ export function ProjectGallery({ images, videos = [] }: ProjectGalleryProps) {
             >
               {allMedia[currentIndex].type === "image" ? (
                 <div className="relative w-full h-full">
-                  <img
+                  <Image
                     src={allMedia[currentIndex].data.src || "/placeholder.svg"}
                     alt={allMedia[currentIndex].data.alt}
                     width={1200}

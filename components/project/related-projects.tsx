@@ -2,6 +2,7 @@ import { Project } from "@/lib/projects";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface RelatedProjectsProps {
   projects: Project[];
@@ -28,7 +29,9 @@ export function RelatedProjects({ projects }: RelatedProjectsProps) {
             <Link href={`/projects/${project.slug}`} className="block">
               <div className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
                 <div className="relative h-48 w-full overflow-hidden">
-                  <img
+                  <Image
+                    width={200}
+                    height={200}
                     src={project.images[0].src || "/placeholder.svg"}
                     alt={project.images[0].alt}
                     className="object-cover transition-transform duration-500 group-hover:scale-105"

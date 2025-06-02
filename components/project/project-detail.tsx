@@ -11,6 +11,7 @@ import {
   getRelatedProjects,
 } from "@/lib/projects";
 import { Card } from "../ui/card";
+import Image from "next/image";
 
 export default function ProjectDetail() {
   const project = getProjectBySlug("e-commerce-platform");
@@ -52,7 +53,9 @@ export default function ProjectDetail() {
             <div className="lg:col-span-2">
               {/* Featured Image */}
               <div className="mb-8 rounded-lg overflow-hidden shadow-lg">
-                <img
+                <Image
+                  width={200}
+                  height={200}
                   src={project.images[0].src || "/placeholder.svg"}
                   alt={project.images[0].alt}
                   className="w-full h-auto"

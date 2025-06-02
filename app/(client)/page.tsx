@@ -32,9 +32,9 @@ export default async function HomePage() {
         <AboutSection />
         <TechnologiesSection />
         <WorkProcessSection />
-        <PortfolioSection />
+        {/* <PortfolioSection /> */}
         <PartnersSection />
-        <TestimonialsSection />
+        {/* <TestimonialsSection /> */}
         {/* <BlogSection /> */}
         <ContactSection />
       </Suspense>

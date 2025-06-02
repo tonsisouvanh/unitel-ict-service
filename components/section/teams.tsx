@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
+import Image from "next/image";
 
 type Props = {
   inView: boolean;
@@ -34,7 +35,9 @@ const Teams = ({ className, inView }: Props) => {
             className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group"
           >
             <div className="relative h-64 w-full overflow-hidden">
-              <img
+              <Image
+                width={300}
+                height={300}
                 src={"/assets/images/avatar-placeholder.png"}
                 alt={`Team Member ${index + 1}`}
                 className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
@@ -89,28 +92,28 @@ const Teams = ({ className, inView }: Props) => {
                 {index === 0
                   ? "Sarah Johnson"
                   : index === 1
-                    ? "Michael Chen"
-                    : index === 2
-                      ? "Emily Rodriguez"
-                      : "David Kim"}
+                  ? "Michael Chen"
+                  : index === 2
+                  ? "Emily Rodriguez"
+                  : "David Kim"}
               </h4>
               <p className="text-color-1 font-medium mb-3">
                 {index === 0
                   ? "CEO & Founder"
                   : index === 1
-                    ? "CTO"
-                    : index === 2
-                      ? "Design Director"
-                      : "Head of Operations"}
+                  ? "CTO"
+                  : index === 2
+                  ? "Design Director"
+                  : "Head of Operations"}
               </p>
               <p className="text-zinc-500 dark:text-zinc-400 text-sm">
                 {index === 0
                   ? "Visionary leader with 15+ years of experience in the tech industry."
                   : index === 1
-                    ? "Tech expert specializing in scalable architecture and emerging technologies."
-                    : index === 2
-                      ? "Award-winning designer focused on creating exceptional user experiences."
-                      : "Operations specialist with a background in process optimization and team management."}
+                  ? "Tech expert specializing in scalable architecture and emerging technologies."
+                  : index === 2
+                  ? "Award-winning designer focused on creating exceptional user experiences."
+                  : "Operations specialist with a background in process optimization and team management."}
               </p>
             </div>
           </motion.div>

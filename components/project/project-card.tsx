@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { cn, slugify } from "@/lib/utils";
 import { ExternalLink } from "lucide-react";
 import { motion } from "motion/react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 type Props = {
@@ -25,10 +26,12 @@ const ProjectCard = ({ className, project, index, inView }: Props) => {
     >
       <Card className="overflow-hidden card-hover border-0 shadow-lg pt-0">
         <div className="relative h-48 w-full overflow-hidden">
-          <img
+          <Image
             src={project.image || "/placeholder.svg"}
             alt={project.title}
             className="object-cover w-full h-full transition-transform duration-500 hover:scale-110"
+            width={200}
+            height={200}
           />
         </div>
         <CardContent className="p-6">

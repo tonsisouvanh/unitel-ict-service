@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Quote } from "lucide-react";
 import { useState } from "react";
 import { useAnimation } from "@/lib/provider/animation-provider";
+import Image from "next/image";
 
 export function TestimonialsSection() {
   const { ref, inView } = useAnimation("testimonials");
@@ -53,7 +54,9 @@ export function TestimonialsSection() {
       className="w-full py-12 md:py-24 lg:py-32 relative overflow-hidden "
     >
       <div className="absolute w-full h-full inset-0 opacity-20">
-        <img
+        <Image
+          width={500}
+          height={500}
           src="/assets/images/react-light.png"
           alt=""
           className="w-full h-full object-fill"

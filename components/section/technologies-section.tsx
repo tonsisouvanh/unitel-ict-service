@@ -543,96 +543,6 @@ export function TechnologiesSection() {
         },
       ],
     },
-    // {
-    //   name: "AI & ML",
-    //   icon: (
-    //     <svg
-    //       xmlns="http://www.w3.org/2000/svg"
-    //       width="24"
-    //       height="24"
-    //       viewBox="0 0 24 24"
-    //       fill="none"
-    //       stroke="currentColor"
-    //       strokeWidth="2"
-    //       strokeLinecap="round"
-    //       strokeLinejoin="round"
-    //     >
-    //       <path d="M12 2v8"></path>
-    //       <path d="m4.93 10.93 1.41 1.41"></path>
-    //       <path d="M2 18h2"></path>
-    //       <path d="M20 18h2"></path>
-    //       <path d="m19.07 10.93-1.41 1.41"></path>
-    //       <path d="M22 22H2"></path>
-    //       <path d="m16 6-4 4-4-4"></path>
-    //       <path d="M16 18a4 4 0 0 0-8 0"></path>
-    //     </svg>
-    //   ),
-    //   color: "#06B6D4",
-    //   technologies: [
-    //     {
-    //       name: "TensorFlow",
-    //       logo: "/placeholder.svg?height=64&width=64&text=TensorFlow",
-    //       description:
-    //         "Open-source machine learning framework developed by Google",
-    //       features: [
-    //         "Neural networks",
-    //         "Deep learning",
-    //         "Model deployment",
-    //         "TensorFlow.js",
-    //       ],
-    //       website: "https://www.tensorflow.org",
-    //     },
-    //     {
-    //       name: "PyTorch",
-    //       logo: "/placeholder.svg?height=64&width=64&text=PyTorch",
-    //       description:
-    //         "Open source machine learning library based on the Torch library",
-    //       features: [
-    //         "Dynamic computation graph",
-    //         "GPU acceleration",
-    //         "Python integration",
-    //         "Research-friendly",
-    //       ],
-    //       website: "https://pytorch.org",
-    //     },
-    //     {
-    //       name: "OpenAI",
-    //       logo: "/placeholder.svg?height=64&width=64&text=OpenAI",
-    //       description:
-    //         "AI research laboratory consisting of the for-profit corporation OpenAI LP and its parent company",
-    //       features: ["GPT models", "DALL-E", "API access", "Fine-tuning"],
-    //       website: "https://openai.com",
-    //     },
-    //     {
-    //       name: "Hugging Face",
-    //       logo: "/placeholder.svg?height=64&width=64&text=HF",
-    //       description:
-    //         "AI community building the future of AI with open source",
-    //       features: ["Transformers", "Model hub", "Datasets", "Spaces"],
-    //       website: "https://huggingface.co",
-    //     },
-    //     {
-    //       name: "scikit-learn",
-    //       logo: "/placeholder.svg?height=64&width=64&text=scikit-learn",
-    //       description: "Machine learning library for Python",
-    //       features: [
-    //         "Classification",
-    //         "Regression",
-    //         "Clustering",
-    //         "Dimensionality reduction",
-    //       ],
-    //       website: "https://scikit-learn.org",
-    //     },
-    //     {
-    //       name: "LangChain",
-    //       logo: "/placeholder.svg?height=64&width=64&text=LangChain",
-    //       description:
-    //         "Framework for developing applications powered by language models",
-    //       features: ["Chains", "Agents", "Memory", "Document loaders"],
-    //       website: "https://langchain.com",
-    //     },
-    //   ],
-    // },
   ];
 
   // Animation variants
@@ -691,10 +601,6 @@ export function TechnologiesSection() {
       className="w-full py-12 md:py-24 lg:py-32 bg-color-1/3 dark:bg-gray-900 overflow-hidden"
     >
       <div className="container px-4 md:px-6 relative">
-        {/* Background decorative elements */}
-        <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-color-1/5 dark:bg-color-1/10 blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-80 h-80 rounded-full bg-[#F97316]/5 dark:bg-[#F97316]/10 blur-3xl"></div>
-
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
