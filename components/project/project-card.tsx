@@ -2,15 +2,17 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { cn, slugify } from "@/lib/utils";
+import { Project } from "@/lib/projects";
+import { cn } from "@/lib/utils";
 import { ExternalLink } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 type Props = {
   className?: string;
-  project: any;
+  project: Project;
   index: number;
   inView: boolean;
 };
@@ -27,7 +29,7 @@ const ProjectCard = ({ className, project, index, inView }: Props) => {
       <Card className="overflow-hidden card-hover border-0 shadow-lg pt-0">
         <div className="relative h-48 w-full overflow-hidden">
           <Image
-            src={project.image || "/placeholder.svg"}
+            src={project.images[0].src || "/placeholder.svg"}
             alt={project.title}
             className="object-cover w-full h-full transition-transform duration-500 hover:scale-110"
             width={200}
@@ -35,29 +37,30 @@ const ProjectCard = ({ className, project, index, inView }: Props) => {
           />
         </div>
         <CardContent className="p-6">
-          <h3 className="text-xl font-bold text-color-1 mb-2 dark:text-[#F5F5F5]">
+          <h3 className="text-xl font-bold text-color-1 mb-2 dark:dtext-[#F5F5F5]">
             {project.title}
           </h3>
-          <p className="text-zinc-500 mb-4 dark:text-zinc-400">
+          <p className="text-zinc-500 mb-4 dark:dtext-zinc-400">
             {project.description}
           </p>
           <div className="flex flex-wrap gap-2 mb-4">
             {project.tags.map((tag: string, tagIndex: number) => (
               <span
                 key={tagIndex}
-                className="inline-block px-2 py-1 rounded-full text-xs font-medium bg-color-1/10 text-color-2 dark:bg-color-2/20 dark:text-[#F5F5F5]"
+                className="inline-block px-2 py-1 rounded-full text-xs font-medium bg-color-1/10 text-color-2 dark:dbg-color-2/20 dark:dtext-[#F5F5F5]"
               >
                 {tag}
               </span>
             ))}
           </div>
-          <Button
-            onClick={() => router.push(`/projects/${slugify(project.title)}`)}
-            variant="outline"
-            className="w-full bg-color-1 text-white hover:bg-color-1/70 hover:text-white transition-all duration-300 dark:border-[#F5F5F5] dark:text-[#F5F5F5] dark:hover:bg-[#F5F5F5] dark:hover:text-color-1"
-          >
-            View Project <ExternalLink className="ml-2 h-4 w-4" />
-          </Button>
+          <Link href={`/projects/${project.slug}`}>
+            <Button
+              variant="outline"
+              className="w-full bg-color-1 text-white hover:bg-color-1/70 hover:text-white transition-all duration-300"
+            >
+              View Project <ExternalLink className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
         </CardContent>
       </Card>
     </motion.div>

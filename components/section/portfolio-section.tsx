@@ -3,60 +3,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAnimation } from "@/lib/provider/animation-provider";
 import { motion } from "motion/react";
 import ProjectCard from "../project/project-card";
+import { getProjects } from "@/lib/projects";
 
 export function PortfolioSection() {
   const { ref, inView } = useAnimation("portfolio");
 
-  const projects = [
-    {
-      category: "web",
-      title: "E-Commerce Platform",
-      description:
-        "A full-featured e-commerce platform with advanced product filtering and secure payment processing.",
-      image: "/assets/images/ecommerce-app.png",
-      tags: ["Next.js", "Tailwind CSS", "Stripe", "MongoDB"],
-    },
-    {
-      category: "mobile",
-      title: "Fitness Tracking App",
-      description:
-        "A mobile app that helps users track their workouts, nutrition, and progress towards fitness goals.",
-      image: "/assets/images/ecommerce-app.png",
-      tags: ["React Native", "Firebase", "Redux", "Health API"],
-    },
-    {
-      category: "web",
-      title: "Real Estate Dashboard",
-      description:
-        "An admin dashboard for real estate agents to manage listings, clients, and transactions.",
-      image: "/assets/images/ecommerce-app.png",
-      tags: ["React", "Node.js", "PostgreSQL", "Chart.js"],
-    },
-    {
-      category: "mobile",
-      title: "Food Delivery App",
-      description:
-        "A mobile app connecting users with local restaurants for food delivery and pickup orders.",
-      image: "/assets/images/ecommerce-app.png",
-      tags: ["Flutter", "Firebase", "Google Maps", "Stripe"],
-    },
-    {
-      category: "web",
-      title: "Learning Management System",
-      description:
-        "An online platform for educational institutions to manage courses, students, and learning materials.",
-      image: "/assets/images/ecommerce-app.png",
-      tags: ["Next.js", "TypeScript", "AWS", "MySQL"],
-    },
-    {
-      category: "mobile",
-      title: "Travel Companion",
-      description:
-        "A travel app with itinerary planning, booking integration, and local recommendations.",
-      image: "/assets/images/ecommerce-app.png",
-      tags: ["React Native", "GraphQL", "MongoDB", "AWS"],
-    },
-  ];
+  const projects = getProjects() || [];
 
   return (
     <section

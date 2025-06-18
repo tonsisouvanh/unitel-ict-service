@@ -1,31 +1,3 @@
-// Mock data for projects
-// In a real application, this would likely come from a CMS, API, or database
-
-export interface ProjectImage {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-}
-
-export interface ProjectVideo {
-  src: string;
-  poster?: string;
-  type: string;
-}
-
-export interface ProjectTechnology {
-  name: string;
-  icon?: string;
-  color?: string;
-}
-
-export interface ProjectLink {
-  title: string;
-  url: string;
-  type: "live" | "github" | "documentation" | "case-study" | "other";
-}
-
 export interface Project {
   id: string;
   slug: string;
@@ -43,6 +15,7 @@ export interface Project {
   videos?: ProjectVideo[];
   technologies: ProjectTechnology[];
   links: ProjectLink[];
+  tags: any[];
   featured: boolean;
   testimonial?: {
     quote: string;
@@ -52,329 +25,461 @@ export interface Project {
   };
 }
 
+export interface ProjectImage {
+  src: string;
+  alt: string;
+  width?: number; // Optional, as it might be handled by layout="fill"
+  height?: number; // Optional
+}
+
+export interface ProjectVideo {
+  src: string;
+  poster: string;
+  type: string;
+}
+
+export interface ProjectTechnology {
+  name: string;
+  color?: string; // Optional, if you want specific colors for technologies
+  icon?: string; // Added for consistency with previous output
+}
+
+export interface ProjectLink {
+  title: string;
+  url: string;
+  type: "live" | "github" | "case-study" | "documentation" | "download"; // Added 'download' type
+}
+
+// Helper to slugify titles (assuming you have a similar utility in your lib/utils)
+const slugify = (text: string) =>
+  text
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, "-") // Replace spaces with -
+    .replace(/[^\w-]+/g, "") // Remove all non-word chars
+    .replace(/--+/g, "-"); // Replace multiple - with single -
+
 export const projects: Project[] = [
   {
     id: "1",
-    slug: "e-commerce-platform",
-    title: "E-Commerce Platform",
-    subtitle: "A full-featured online shopping experience",
-    client: "RetailTech Inc.",
-    date: "2023",
-    duration: "6 months",
-    category: "Web Development",
+    slug: slugify("U-Money App"),
+    title: "U-Money App",
+    subtitle: "Laos's leading e-wallet for seamless cashless transactions.",
+    client: "Unitel (Laos)",
+    date: "2019", // Launch year
+    duration: "Ongoing development",
+    category: "Mobile Application",
     description:
-      "A comprehensive e-commerce platform built with Next.js, featuring product management, user authentication, shopping cart functionality, payment processing, and order management.",
+      "u-Money is a leading e-wallet application in Laos, launched in 2019, providing comprehensive cashless payment solutions. It facilitates fast money transfers, bill payments, mobile top-ups, online shopping, and QR code payments.",
     challenge:
-      "RetailTech needed a scalable e-commerce solution that could handle thousands of products and provide a seamless shopping experience across all devices. Their existing platform was outdated and couldn't support their growing business needs.",
+      "To introduce and establish a secure, reliable, and widely adopted cashless payment ecosystem in Laos, addressing the need for convenient digital financial services.",
     solution:
-      "We developed a custom e-commerce platform using Next.js for the frontend and a headless CMS for content management. The application features server-side rendering for optimal performance and SEO, a responsive design for all devices, and integration with popular payment gateways.",
+      "Developed a robust and user-friendly mobile e-wallet application with multi-layer security features, including eKYC Liveness detection, and integrated diverse payment functionalities to cater to everyday needs.",
     outcome:
-      "The new platform resulted in a 45% increase in mobile conversions, a 30% reduction in cart abandonment, and significantly improved page load times. The client reported a 25% increase in overall sales within the first three months after launch.",
+      "U-Money has successfully become a prominent digital wallet in Laos, significantly boosting financial inclusion and enabling a secure and efficient cashless society.",
     images: [
       {
-        src: "/placeholder.svg?height=600&width=800&text=E-Commerce Homepage",
-        alt: "E-Commerce Platform Homepage",
-        width: 800,
-        height: 600,
+        src: "/assets/images/projects/umoney/uma.jpeg",
+        alt: "U-Money App Homepage",
       },
       {
-        src: "/placeholder.svg?height=600&width=800&text=Product Listing",
-        alt: "Product Listing Page",
-        width: 800,
-        height: 600,
+        src: "/assets/images/projects/umoney/umb.png",
+        alt: "U-Money Money Transfer",
       },
       {
-        src: "/placeholder.svg?height=600&width=800&text=Shopping Cart",
-        alt: "Shopping Cart Interface",
-        width: 800,
-        height: 600,
+        src: "/assets/images/projects/umoney/umc.png",
+        alt: "U-Money QR Payment",
       },
       {
-        src: "/placeholder.svg?height=600&width=800&text=Checkout Process",
-        alt: "Checkout Process",
-        width: 800,
-        height: 600,
+        src: "/assets/images/projects/umoney/umd.jpeg",
+        alt: "U-Money QR Payment",
       },
       {
-        src: "/placeholder.svg?height=600&width=800&text=Admin Dashboard",
-        alt: "Admin Dashboard",
-        width: 800,
-        height: 600,
+        src: "/assets/images/projects/umoney/ume.jpg",
+        alt: "U-Money QR Payment",
+      },
+      {
+        src: "/assets/images/projects/umoney/umf.png",
+        alt: "U-Money QR Payment",
+      },
+      {
+        src: "/assets/images/projects/umoney/umg.png",
+        alt: "U-Money QR Payment",
+      },
+      {
+        src: "/assets/images/projects/umoney/umh.png",
+        alt: "U-Money QR Payment",
+      },
+      {
+        src: "/assets/images/projects/umoney/umi.png",
+        alt: "U-Money QR Payment",
       },
     ],
     videos: [
-      {
-        src: "https://www.youtube.com/watch?v=qVEEpUvl0Kw",
-        poster: "/placeholder.svg?height=400&width=700&text=Video Thumbnail",
-        type: "video/mp4",
-      },
+      // {
+      //   src: "https://youtu.be/uK5aQIcYo2g", // Placeholder YouTube video URL
+      //   poster: "/placeholder.svg?height=400&width=700&text=U-Money Demo",
+      //   type: "video/mp4",
+      // },
     ],
     technologies: [
-      { name: "Next.js", color: "#000000" },
-      { name: "React", color: "#61DAFB" },
-      { name: "TypeScript", color: "#3178C6" },
-      { name: "Tailwind CSS", color: "#06B6D4" },
-      { name: "Stripe", color: "#6772E5" },
-      { name: "MongoDB", color: "#47A248" },
-      { name: "Vercel", color: "#000000" },
+      {
+        name: "Mobile Development",
+        icon: "/icons/mobile.svg",
+        color: "#3498db",
+      },
+      { name: "FinTech", icon: "/icons/finance.svg", color: "#2ecc71" },
+      {
+        name: "Payment Gateway Integration",
+        icon: "/icons/api.svg",
+        color: "#f39c12",
+      },
+      {
+        name: "eKYC & Biometrics",
+        icon: "/icons/security.svg",
+        color: "#e74c3c",
+      },
     ],
+    tags: ["Mobile Wallet", "FinTech", "Payment Gateway", "eKYC"],
     links: [
       {
-        title: "Live Site",
-        url: "https://example-ecommerce.com",
-        type: "live",
+        title: "Download on Google Play",
+        url: "https://play.google.com/store/apps/details?id=com.umoney.enduser&hl=en",
+        type: "download",
       },
       {
-        title: "GitHub Repository",
-        url: "https://github.com/example/ecommerce",
-        type: "github",
-      },
-      {
-        title: "Case Study",
-        url: "https://example.com/case-studies/ecommerce",
-        type: "case-study",
+        title: "Download on App Store",
+        url: "https://apps.apple.com/us/app/u-money/id1524617501",
+        type: "download",
       },
     ],
     featured: true,
     testimonial: {
       quote:
-        "The team at TechNova delivered an exceptional e-commerce platform that exceeded our expectations. The attention to detail and focus on user experience has transformed our online business.",
-      author: "Sarah Johnson",
-      position: "CTO",
-      company: "RetailTech Inc.",
+        "U-Money has truly transformed the way people transact in Laos, providing unparalleled convenience and security.",
+      author: "Mr. Phoutthasinh",
+      position: "Head of Digital Finance",
+      company: "Unitel",
     },
   },
   {
     id: "2",
-    slug: "healthcare-management-system",
-    title: "Healthcare Management System",
-    subtitle: "Streamlining patient care and administrative processes",
-    client: "MediCare Solutions",
-    date: "2022",
-    duration: "9 months",
-    category: "Custom Software",
+    slug: slugify("Lao App (Super App)"),
+    title: "Lao App (Super App)",
+    subtitle: "The all-in-one super application for daily life in Laos.",
+    client: "Unitel (Laos)",
+    date: "2019", // Assuming around the same timeframe for initial conceptualization
+    duration: "Ongoing development",
+    category: "Mobile Application",
     description:
-      "A comprehensive healthcare management system that integrates patient records, appointment scheduling, billing, and inventory management into a single, secure platform.",
+      "LaoApp is a multi-functional platform developed by Unitel, integrating numerous essential utilities into a single application to serve the diverse needs of the Laotian market. It offers messaging, video calls, entertainment, and more.",
     challenge:
-      "MediCare Solutions needed to replace multiple disconnected systems with a unified solution that could improve efficiency, reduce errors, and enhance patient care while maintaining strict compliance with healthcare regulations.",
+      "To consolidate various essential services into one seamless and secure mobile application, fostering a comprehensive digital ecosystem for users in Laos.",
     solution:
-      "We developed a custom healthcare management system with role-based access control, electronic health records (EHR) management, automated appointment reminders, integrated billing, and comprehensive reporting. The system was built with security and compliance as top priorities.",
+      "Built a robust 'Super App' architecture, integrating secure messaging, high-quality voice/video calls, and a wide array of entertainment and utility services, focusing on user privacy and a multi-platform experience.",
     outcome:
-      "The new system reduced administrative time by 35%, decreased billing errors by 40%, and improved patient satisfaction scores by 25%. The client was able to achieve HIPAA compliance and streamline their entire operation.",
+      "LaoApp has become a central digital hub for millions of users, simplifying daily tasks and providing a rich, integrated experience across various services.",
     images: [
       {
-        src: "/placeholder.svg?height=600&width=800&text=Healthcare Dashboard",
-        alt: "Healthcare Management Dashboard",
-        width: 800,
-        height: 600,
+        src: "/assets/images/projects/laoapp/lappa.png",
+        alt: "Lao App Home Screen",
       },
       {
-        src: "/placeholder.svg?height=600&width=800&text=Patient Records",
-        alt: "Patient Records Interface",
-        width: 800,
-        height: 600,
+        src: "/assets/images/projects/laoapp/lappb.png",
+        alt: "Lao App Messaging",
       },
       {
-        src: "/placeholder.svg?height=600&width=800&text=Appointment Scheduling",
-        alt: "Appointment Scheduling System",
-        width: 800,
-        height: 600,
+        src: "/assets/images/projects/laoapp/lappc.png",
+        alt: "Lao App Entertainment",
       },
       {
-        src: "/placeholder.svg?height=600&width=800&text=Billing Module",
-        alt: "Billing and Insurance Module",
-        width: 800,
-        height: 600,
+        src: "/assets/images/projects/laoapp/lappd.png",
+        alt: "Lao App Entertainment",
+      },
+      {
+        src: "/assets/images/projects/laoapp/lappe.png",
+        alt: "Lao App Entertainment",
+      },
+      {
+        src: "/assets/images/projects/laoapp/lappf.png",
+        alt: "Lao App Entertainment",
+      },
+      {
+        src: "/assets/images/projects/laoapp/lappg.png",
+        alt: "Lao App Entertainment",
       },
     ],
+    tags: ["Super App", "Messaging", "Video Calls", "Entertainment"],
+    videos: [],
     technologies: [
-      { name: "React", color: "#61DAFB" },
-      { name: "Node.js", color: "#339933" },
-      { name: "PostgreSQL", color: "#336791" },
-      { name: "Express", color: "#000000" },
-      { name: "Docker", color: "#2496ED" },
-      { name: "AWS", color: "#FF9900" },
-      { name: "Socket.io", color: "#010101" },
+      { name: "React Native", icon: "/icons/react.svg", color: "#61DAFB" },
+      { name: "Firebase", icon: "/icons/firebase.svg", color: "#FFCA28" },
+      { name: "Cloud Computing", icon: "/icons/cloud.svg", color: "#FF9900" },
+      {
+        name: "Real-time Communication",
+        icon: "/icons/chat.svg",
+        color: "#00C4FF",
+      },
     ],
     links: [
       {
-        title: "Case Study",
-        url: "https://example.com/case-studies/healthcare",
-        type: "case-study",
-      },
+        title: "Download LaoApp (Android)",
+        url: "https://play.google.com/store/apps/details?id=com.unitel.mocha.app&hl=lo&pli=1",
+        type: "download",
+      }, // Placeholder
       {
-        title: "Documentation",
-        url: "https://docs.example.com/healthcare-system",
-        type: "documentation",
-      },
+        title: "Download LaoApp (iOS)",
+        url: "https://apps.apple.com/us/app/laoapp/id1521185976",
+        type: "download",
+      }, // Placeholder
     ],
     featured: true,
     testimonial: {
       quote:
-        "The healthcare management system developed by TechNova has revolutionized our operations. Our staff can now focus more on patient care rather than administrative tasks.",
-      author: "Dr. Michael Chen",
-      position: "CEO",
-      company: "MediCare Solutions",
+        "LaoApp has truly simplified my digital life in Laos. It's incredibly convenient to have so many services in one place!",
+      author: "Ms. Saysana",
+      position: "LaoApp User",
+      company: "General Public",
     },
   },
   {
     id: "3",
-    slug: "financial-analytics-dashboard",
-    title: "Financial Analytics Dashboard",
-    subtitle: "Data-driven insights for financial decision making",
-    client: "Global Investments Ltd.",
-    date: "2023",
-    duration: "4 months",
-    category: "Data Visualization",
+    slug: slugify("Lao TV"),
+    title: "Lao TV",
+    subtitle:
+      "Your digital gateway to diverse online television and video-on-demand.",
+    client: "Unitel (Laos)",
+    date: "2020", // Inferred launch year
+    duration: "Ongoing development",
+    category: "Media & Entertainment Platform",
     description:
-      "An interactive financial analytics dashboard that provides real-time insights into market trends, portfolio performance, and investment opportunities.",
+      "LaoTV is a digital entertainment platform offering Over-The-Top (OTT) online television services and Video On Demand (VOD) content. It provides live viewing of domestic and international TV channels and a diverse digital content library.",
     challenge:
-      "Global Investments needed a way to visualize complex financial data in an intuitive manner, allowing their analysts and clients to make informed investment decisions quickly.",
+      "To deliver high-quality, diverse digital entertainment content across various devices in Laos, ensuring stable streaming and a rich user experience.",
     solution:
-      "We created a responsive dashboard with interactive charts, customizable widgets, and automated reporting features. The solution integrates with multiple financial data sources and provides real-time updates and alerts.",
+      "Developed a robust OTT platform with live TV streaming, a comprehensive VOD library, catch-up TV functionality, and unique features like multi-angle camera views for sports, ensuring broad accessibility and seamless viewing.",
     outcome:
-      "The dashboard reduced analysis time by 60% and improved decision-making accuracy by 40%. Clients reported higher satisfaction with the transparency and accessibility of their investment information.",
+      "LaoTV has become a popular entertainment destination, offering extensive local and international content, enhancing the digital media consumption experience for users in Laos.",
     images: [
       {
-        src: "/placeholder.svg?height=600&width=800&text=Financial Dashboard",
-        alt: "Financial Analytics Dashboard Overview",
-        width: 800,
-        height: 600,
+        src: "/assets/images/projects/laotv/laotva.png",
+        alt: "LaoTV Homepage",
       },
       {
-        src: "/placeholder.svg?height=600&width=800&text=Performance Metrics",
-        alt: "Performance Metrics Visualization",
-        width: 800,
-        height: 600,
+        src: "/assets/images/projects/laotv/laotvb.png",
+        alt: "LaoTV Live Channels", // Example alt text
       },
       {
-        src: "/placeholder.svg?height=600&width=800&text=Market Trends",
-        alt: "Market Trends Analysis",
-        width: 800,
-        height: 600,
+        src: "/assets/images/projects/laotv/laotvc.png",
+        alt: "LaoTV VOD Content", // Example alt text
       },
       {
-        src: "/placeholder.svg?height=600&width=800&text=Portfolio Management",
-        alt: "Portfolio Management Interface",
-        width: 800,
-        height: 600,
+        src: "/assets/images/projects/laotv/laotvd.png",
+        alt: "LaoTV Sports Section", // Example alt text
+      },
+      {
+        src: "/assets/images/projects/laotv/laotvi.png",
+        alt: "LaoTV User Profile", // Example alt text
+      },
+      {
+        src: "/assets/images/projects/laotv/laotvj.png",
+        alt: "LaoTV Settings", // Example alt text
+      },
+      {
+        src: "/assets/images/projects/laotv/laotvk.png",
+        alt: "LaoTV Search Interface", // Example alt text
+      },
+      {
+        src: "/assets/images/projects/laotv/laotvl.png",
+        alt: "LaoTV Featured Content", // Example alt text
       },
     ],
+    videos: [],
     technologies: [
-      { name: "React", color: "#61DAFB" },
-      { name: "D3.js", color: "#F9A03C" },
-      { name: "Python", color: "#3776AB" },
-      { name: "FastAPI", color: "#009688" },
-      { name: "Redis", color: "#DC382D" },
-      { name: "TensorFlow", color: "#FF6F00" },
-      { name: "Google Cloud", color: "#4285F4" },
+      { name: "OTT Streaming", icon: "/icons/video.svg", color: "#9b59b6" },
+      {
+        name: "Content Delivery Networks (CDN)",
+        icon: "/icons/cloud.svg",
+        color: "#34495e",
+      },
+      {
+        name: "DRM (Digital Rights Management)",
+        icon: "/icons/security.svg",
+        color: "#c0392b",
+      },
+      {
+        name: "Adaptive Bitrate Streaming",
+        icon: "/icons/network.svg",
+        color: "#1abc9c",
+      },
     ],
     links: [
-      {
-        title: "Demo",
-        url: "https://demo.example.com/financial-dashboard",
-        type: "live",
-      },
-      {
-        title: "Case Study",
-        url: "https://example.com/case-studies/financial-analytics",
-        type: "case-study",
-      },
+      { title: "Visit LaoTV Website", url: "https://laotv.la", type: "live" }, // Placeholder URL
     ],
+    tags: ["OTT", "Streaming", "VOD", "Live TV"],
     featured: false,
+    testimonial: {
+      quote:
+        "LaoTV offers an incredible array of content, from live sports to my favorite movies. It's truly a comprehensive entertainment solution.",
+      author: "Mr. Bounmy",
+      position: "LaoTV Subscriber",
+      company: "General Public",
+    },
   },
   {
     id: "4",
-    slug: "mobile-fitness-app",
-    title: "Mobile Fitness Application",
-    subtitle: "Personalized workout and nutrition tracking",
-    client: "FitLife Innovations",
-    date: "2022",
-    duration: "5 months",
-    category: "Mobile Development",
+    slug: slugify("eKYC Solution"),
+    title: "eKYC Solution",
+    subtitle:
+      "Advanced electronic Know Your Customer for secure and efficient identity verification.",
+    client: "Unitel (Internal & Partners)",
+    date: "2024", // Integration year
+    duration: "Ongoing implementation & expansion",
+    category: "Security & Identity Management",
     description:
-      "A comprehensive fitness application that provides personalized workout plans, nutrition tracking, progress monitoring, and social features to keep users motivated.",
+      "Unitel's eKYC (Electronic Know Your Customer) solution was integrated into the LaoApp and u-Money applications from 2024. It aims to enhance security and convenience for customers by using AI-OCR and facial recognition technology.",
     challenge:
-      "FitLife wanted to create a mobile app that would stand out in the crowded fitness market by offering truly personalized experiences and fostering a community of users.",
+      "To streamline customer onboarding and identity verification processes while significantly reducing fraud and ensuring regulatory compliance in a digital-first environment.",
     solution:
-      "We developed a cross-platform mobile application with AI-driven workout recommendations, detailed progress tracking, nutrition analysis, and social features. The app integrates with popular fitness wearables and provides actionable insights based on user data.",
+      "Developed an cutting-edge eKYC system leveraging AI-powered Optical Character Recognition (OCR) and facial recognition with liveness detection, enabling rapid and secure online authentication and eSIM registration.",
     outcome:
-      "The app achieved over 100,000 downloads in the first three months, with a 4.8/5 rating on app stores. User retention rates were 45% higher than industry average, and premium subscription conversion exceeded targets by 30%.",
+      "The eKYC solution has dramatically accelerated user authentication, minimized fraudulent activities, and simplified the process of digital service registration for Unitel and its partners.",
     images: [
       {
-        src: "/placeholder.svg?height=600&width=800&text=Fitness App Home",
-        alt: "Fitness App Home Screen",
-        width: 800,
-        height: 600,
+        src: "/assets/images/projects/ekyc/ekyca.png",
+        alt: "eKYC Solution Interface",
       },
       {
-        src: "/placeholder.svg?height=600&width=800&text=Workout Tracking",
-        alt: "Workout Tracking Interface",
-        width: 800,
-        height: 600,
+        src: "/assets/images/projects/ekyc/ekycb.png",
+        alt: "eKYC AI-OCR Process",
       },
       {
-        src: "/placeholder.svg?height=600&width=800&text=Nutrition Analysis",
-        alt: "Nutrition Analysis Dashboard",
-        width: 800,
-        height: 600,
+        src: "/assets/images/projects/ekyc/ekycc.png",
+        alt: "eKYC Facial Recognition",
       },
       {
-        src: "/placeholder.svg?height=600&width=800&text=Progress Charts",
-        alt: "User Progress Visualization",
-        width: 800,
-        height: 600,
-      },
-      {
-        src: "/placeholder.svg?height=600&width=800&text=Community Features",
-        alt: "Community and Social Features",
-        width: 800,
-        height: 600,
+        src: "/assets/images/projects/ekyc/ekycd.png",
+        alt: "eKYC Facial Recognition",
       },
     ],
-    videos: [
-      {
-        src: "https://example.com/videos/fitness-app-demo.mp4",
-        poster: "/placeholder.svg?height=400&width=700&text=App Demo Thumbnail",
-        type: "video/mp4",
-      },
-    ],
+    tags: ["Security", "AI-OCR", "Facial Recognition", "Identity Verification"],
+    videos: [],
     technologies: [
-      { name: "React Native", color: "#61DAFB" },
-      { name: "TypeScript", color: "#3178C6" },
-      { name: "Firebase", color: "#FFCA28" },
-      { name: "Redux", color: "#764ABC" },
-      { name: "Node.js", color: "#339933" },
-      { name: "MongoDB", color: "#47A248" },
-      { name: "TensorFlow Lite", color: "#FF6F00" },
+      {
+        name: "Artificial Intelligence (AI)",
+        icon: "/icons/ai.svg",
+        color: "#FF6F00",
+      },
+      { name: "Machine Learning", icon: "/icons/ml.svg", color: "#FF6F00" },
+      {
+        name: "Biometric Authentication",
+        icon: "/icons/fingerprint.svg",
+        color: "#27ae60",
+      },
+      { name: "Data Security", icon: "/icons/lock.svg", color: "#34495e" },
     ],
     links: [
       {
-        title: "App Store",
-        url: "https://apps.apple.com/example/fitness-app",
-        type: "live",
-      },
-      {
-        title: "Google Play",
-        url: "https://play.google.com/store/apps/details?id=com.example.fitnessapp",
-        type: "live",
-      },
-      {
-        title: "Case Study",
-        url: "https://example.com/case-studies/fitness-app",
+        title: "Learn More",
+        url: "https://ekyc.unitel.com.la/",
         type: "case-study",
-      },
+      }, // Placeholder URL
     ],
     featured: true,
     testimonial: {
       quote:
-        "Working with TechNova on our fitness app was a game-changer. Their technical expertise and understanding of user experience helped us create an app that our users love.",
-      author: "Jessica Martinez",
-      position: "Product Director",
-      company: "FitLife Innovations",
+        "The eKYC solution is a game-changer for digital onboarding. It's incredibly fast, accurate, and has significantly boosted our security.",
+      author: "Dr. Somphone K.",
+      position: "Chief Technology Officer",
+      company: "Unitel",
+    },
+  },
+  {
+    id: "5",
+    slug: slugify("Ushopping E-commerce System"),
+    title: "Ushopping E-commerce System",
+    subtitle:
+      "Unitel's comprehensive online shopping platform for products and services.",
+    client: "Unitel (Laos)",
+    date: "2020", // Launch year
+    duration: "Ongoing development",
+    category: "E-commerce Platform",
+    description:
+      "Unitel's Ushopping e-commerce system provides a comprehensive online shopping solution, launched in 2020. It offers a wide range of products from electronic devices to SIM cards and IoT devices, with nationwide home delivery.",
+    challenge:
+      "To create a robust and user-friendly e-commerce platform capable of handling diverse product categories, secure payments, and efficient nationwide logistics.",
+    solution:
+      "Developed a full-fledged e-commerce system with seamless integration for online payments via u-Money, comprehensive product catalog management, attractive promotional features, and a dedicated 24/7 customer support system.",
+    outcome:
+      "Ushopping has become a key online sales channel for Unitel, expanding market reach, improving customer convenience, and driving significant digital sales growth.",
+    images: [
+      {
+        src: "/assets/images/projects/ushopping/ushopa.png",
+        alt: "Ushopping Homepage",
+      },
+      {
+        src: "/assets/images/projects/ushopping/ushopb.png",
+        alt: "Ushopping Product Listing",
+      },
+      {
+        src: "/assets/images/projects/ushopping/ushopc.png",
+        alt: "Ushopping Checkout Process",
+      },
+      {
+        src: "/assets/images/projects/ushopping/ushopd.png",
+        alt: "Ushopping Checkout Process",
+      },
+      {
+        src: "/assets/images/projects/ushopping/ushope.png",
+        alt: "Ushopping Checkout Process",
+      },
+      {
+        src: "/assets/images/projects/ushopping/ushopf.png",
+        alt: "Ushopping Checkout Process",
+      },
+    ],
+    tags: ["E-commerce", "Online Shopping", "Delivery", "Promotions"],
+    videos: [],
+    technologies: [
+      {
+        name: "E-commerce Platform",
+        icon: "/icons/cart.svg",
+        color: "#e67e22",
+      },
+      { name: "Web Development", icon: "/icons/web.svg", color: "#3498db" },
+      {
+        name: "Payment Integration",
+        icon: "/icons/payment.svg",
+        color: "#27ae60",
+      },
+      {
+        name: "Logistics Management",
+        icon: "/icons/delivery.svg",
+        color: "#f1c40f",
+      },
+    ],
+    links: [
+      {
+        title: "Visit Ushopping Website",
+        url: "https://u-money.com.la",
+        type: "live",
+      }, // Placeholder URL
+    ],
+    featured: true,
+    testimonial: {
+      quote:
+        "Ushopping has transformed our online sales. The platform is intuitive for customers and efficient for our operations.",
+      author: "Mr. Bounnhang S.",
+      position: "Head of Sales & Marketing",
+      company: "Unitel",
     },
   },
 ];
+
+export function getProjects(): Project[] | undefined {
+  return projects;
+}
 
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((project) => project.slug === slug);

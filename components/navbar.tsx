@@ -67,7 +67,7 @@ export function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className={`text-sm font-medium transition-all duration-200 ${
+              className={`text-sm font-medium transition-all duration-200 text-shadow-lg ${
                 isActive(link.href)
                   ? "text-white border-b-2 border-white pb-1"
                   : "text-white/80 hover:text-white"

@@ -55,7 +55,7 @@ export function ProjectGallery({ images, videos = [] }: ProjectGalleryProps) {
                 height={200}
                 src={media.data.src || "/placeholder.svg"}
                 alt={media.data.alt}
-                className="object-cover"
+                className="object-contain w-full h-full"
               />
             ) : (
               <div className="relative w-full h-full">
