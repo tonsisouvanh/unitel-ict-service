@@ -87,7 +87,7 @@ export function HeroSection() {
         initial={{ opacity: 0, y: 30 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
         transition={{ duration: 0.8, delay: 0.6 }}
-        className="mt-16 relative z-[1]"
+        className="mt-16 hidden relative z-[1]"
       >
         <TechnologySlider
           direction="left"
@@ -102,9 +102,8 @@ export function HeroSection() {
           className="mb-4"
         />
       </motion.div>
-      <div className="absolute ml-[-50%] h-[500px]d w-[200%] rounded-b-[100%] top-0 bg-[url(/assets/images/hero-bg.jpg)] bg-center bg-fill h-full max-h-[800px] bg-no-repeat"></div>
+      <div className="absolute ml-[-50%] h-[500px]d w-[200%] rounded-b-[100%] top-0 bg-[url(/assets/images/hero-bg.jpg)] bg-center bg-cover h-full bg-no-repeat"></div>
       <div className="absolute w-full h-full top-0 left-0 bg-gradient-to-t from-color-1 via-color-1/80 to-transparent"></div>
-      {/* <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-background to-transparent"></div> */}
     </section>
   );
 }

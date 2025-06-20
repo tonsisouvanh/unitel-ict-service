@@ -1,13 +1,24 @@
 "use client";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useAnimation } from "@/lib/provider/animation-provider";
-import { motion } from "motion/react";
-import ProjectCard from "../project/project-card";
 import { getProjects } from "@/lib/projects";
+import { useAnimation } from "@/lib/provider/animation-provider";
+import Autoplay from "embla-carousel-autoplay";
+import { motion } from "motion/react";
+import * as React from "react";
+import ProjectCard from "../project/project-card";
 
 export function PortfolioSection() {
   const { ref, inView } = useAnimation("portfolio");
-
+  const plugin = React.useRef(
+    Autoplay({ delay: 2000, stopOnInteraction: true })
+  );
   const projects = getProjects() || [];
 
   return (
@@ -63,48 +74,33 @@ export function PortfolioSection() {
               </TabsTrigger>
             </TabsList>
           </motion.div>
-
           <TabsContent value="all" className="mt-0">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {projects.map((project, index) => (
-                <ProjectCard
-                  key={index}
-                  project={project}
-                  index={index}
-                  inView={inView}
-                />
-              ))}
-            </div>
-          </TabsContent>
-
-          <TabsContent value="web" className="mt-0">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {projects
-                .filter((project) => project.category === "web")
-                .map((project, index) => (
-                  <ProjectCard
+            <Carousel
+              plugins={[plugin.current]}
+              onMouseEnter={plugin.current.stop}
+              onMouseLeave={plugin.current.reset}
+              opts={{
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="p-3">
+                {projects.map((project, index) => (
+                  <CarouselItem
+                    className="md:basis-1/2 lg:basis-1/3"
                     key={index}
-                    project={project}
-                    index={index}
-                    inView={inView}
-                  />
+                  >
+                    <ProjectCard
+                      project={project}
+                      index={index}
+                      inView={inView}
+                    />
+                  </CarouselItem>
                 ))}
-            </div>
-          </TabsContent>
-
-          <TabsContent value="mobile" className="mt-0">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {projects
-                .filter((project) => project.category === "mobile")
-                .map((project, index) => (
-                  <ProjectCard
-                    key={index}
-                    project={project}
-                    index={index}
-                    inView={inView}
-                  />
-                ))}
-            </div>
+              </CarouselContent>
+              <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 bg-color-1 text-white rounded-full p-2 shadow-lg dark:dbg-zinc-700 hover:bg-color-1/70 transition-colors hidden md:flex" />
+              <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 bg-color-1 text-white rounded-full p-2 shadow-lg dark:dbg-zinc-700 hover:bg-color-1/70 transition-colors hidden md:flex" />
+            </Carousel>
           </TabsContent>
         </Tabs>
       </div>

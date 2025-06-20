@@ -139,7 +139,7 @@ export default function ProjectDetail({ slug }: Props) {
             </div>
 
             {/* Sidebar */}
-            <div className="lg:col-span-1">
+            {/* <div className="lg:col-span-1">
               <div className="bg-gray-50 border rounded-lg p-6 shadow-md sticky top-24">
                 <h3 className="text-xl font-bold text-color-1 dark:text-[#F5F5F5] mb-6">
                   Project Details
@@ -171,6 +171,63 @@ export default function ProjectDetail({ slug }: Props) {
                   </div>
 
                   <div className="flexd hidden items-start">
+                    <Clock className="h-5 w-5 text-[#F97316] mt-0.5 mr-3" />
+                    <div>
+                      <h4 className="font-medium text-gray-700 dark:text-gray-300">
+                        Duration
+                      </h4>
+                      <p className="text-gray-600 dark:text-gray-400">
+                        {project.duration}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <h3 className="text-xl font-bold text-color-1 dark:text-[#F5F5F5] mb-4">
+                  Technologies
+                </h3>
+                <div className="mb-8">
+                  <ProjectTechnologies technologies={project.technologies} />
+                </div>
+
+                <h3 className="text-xl font-bold text-color-1 dark:text-[#F5F5F5] mb-4">
+                  Project Links
+                </h3>
+                <ProjectLinks links={project.links} />
+              </div>
+            </div> */}
+            <div className="lg:col-span-1">
+              <div className="bg-white/60 dark:bg-white/5 backdrop-blur-lg border border-white/30 dark:border-white/10 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 sticky top-24">
+                <h3 className="text-xl font-bold text-color-1 dark:text-[#F5F5F5] mb-6">
+                  Project Details
+                </h3>
+
+                <div className="space-y-4 mb-8">
+                  <div className="flex items-start">
+                    <User className="h-5 w-5 text-[#F97316] mt-0.5 mr-3" />
+                    <div>
+                      <h4 className="font-medium text-gray-700 dark:text-gray-300">
+                        Client
+                      </h4>
+                      <p className="text-gray-600 dark:text-gray-400">
+                        {project.client}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start">
+                    <CalendarDays className="h-5 w-5 text-[#F97316] mt-0.5 mr-3" />
+                    <div>
+                      <h4 className="font-medium text-gray-700 dark:text-gray-300">
+                        Release year
+                      </h4>
+                      <p className="text-gray-600 dark:text-gray-400">
+                        {project.date}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start">
                     <Clock className="h-5 w-5 text-[#F97316] mt-0.5 mr-3" />
                     <div>
                       <h4 className="font-medium text-gray-700 dark:text-gray-300">
