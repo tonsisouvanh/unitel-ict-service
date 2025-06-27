@@ -1,62 +1,25 @@
 "use client";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { getProjects } from "@/lib/projects";
 import { useAnimation } from "@/lib/provider/animation-provider";
+import Autoplay from "embla-carousel-autoplay";
 import { motion } from "motion/react";
+import * as React from "react";
 import ProjectCard from "../project/project-card";
 
 export function PortfolioSection() {
   const { ref, inView } = useAnimation("portfolio");
-
-  const projects = [
-    {
-      category: "web",
-      title: "E-Commerce Platform",
-      description:
-        "A full-featured e-commerce platform with advanced product filtering and secure payment processing.",
-      image: "/assets/images/ecommerce-app.png",
-      tags: ["Next.js", "Tailwind CSS", "Stripe", "MongoDB"],
-    },
-    {
-      category: "mobile",
-      title: "Fitness Tracking App",
-      description:
-        "A mobile app that helps users track their workouts, nutrition, and progress towards fitness goals.",
-      image: "/assets/images/ecommerce-app.png",
-      tags: ["React Native", "Firebase", "Redux", "Health API"],
-    },
-    {
-      category: "web",
-      title: "Real Estate Dashboard",
-      description:
-        "An admin dashboard for real estate agents to manage listings, clients, and transactions.",
-      image: "/assets/images/ecommerce-app.png",
-      tags: ["React", "Node.js", "PostgreSQL", "Chart.js"],
-    },
-    {
-      category: "mobile",
-      title: "Food Delivery App",
-      description:
-        "A mobile app connecting users with local restaurants for food delivery and pickup orders.",
-      image: "/assets/images/ecommerce-app.png",
-      tags: ["Flutter", "Firebase", "Google Maps", "Stripe"],
-    },
-    {
-      category: "web",
-      title: "Learning Management System",
-      description:
-        "An online platform for educational institutions to manage courses, students, and learning materials.",
-      image: "/assets/images/ecommerce-app.png",
-      tags: ["Next.js", "TypeScript", "AWS", "MySQL"],
-    },
-    {
-      category: "mobile",
-      title: "Travel Companion",
-      description:
-        "A travel app with itinerary planning, booking integration, and local recommendations.",
-      image: "/assets/images/ecommerce-app.png",
-      tags: ["React Native", "GraphQL", "MongoDB", "AWS"],
-    },
-  ];
+  const plugin = React.useRef(
+    Autoplay({ delay: 2000, stopOnInteraction: true })
+  );
+  const projects = getProjects() || [];
 
   return (
     <section
@@ -111,48 +74,33 @@ export function PortfolioSection() {
               </TabsTrigger>
             </TabsList>
           </motion.div>
-
           <TabsContent value="all" className="mt-0">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {projects.map((project, index) => (
-                <ProjectCard
-                  key={index}
-                  project={project}
-                  index={index}
-                  inView={inView}
-                />
-              ))}
-            </div>
-          </TabsContent>
-
-          <TabsContent value="web" className="mt-0">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {projects
-                .filter((project) => project.category === "web")
-                .map((project, index) => (
-                  <ProjectCard
+            <Carousel
+              plugins={[plugin.current]}
+              onMouseEnter={plugin.current.stop}
+              onMouseLeave={plugin.current.reset}
+              opts={{
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="p-3">
+                {projects.map((project, index) => (
+                  <CarouselItem
+                    className="md:basis-1/2 lg:basis-1/3"
                     key={index}
-                    project={project}
-                    index={index}
-                    inView={inView}
-                  />
+                  >
+                    <ProjectCard
+                      project={project}
+                      index={index}
+                      inView={inView}
+                    />
+                  </CarouselItem>
                 ))}
-            </div>
-          </TabsContent>
-
-          <TabsContent value="mobile" className="mt-0">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {projects
-                .filter((project) => project.category === "mobile")
-                .map((project, index) => (
-                  <ProjectCard
-                    key={index}
-                    project={project}
-                    index={index}
-                    inView={inView}
-                  />
-                ))}
-            </div>
+              </CarouselContent>
+              <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 bg-color-1 text-white rounded-full p-2 shadow-lg dark:dbg-zinc-700 hover:bg-color-1/70 transition-colors hidden md:flex" />
+              <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 bg-color-1 text-white rounded-full p-2 shadow-lg dark:dbg-zinc-700 hover:bg-color-1/70 transition-colors hidden md:flex" />
+            </Carousel>
           </TabsContent>
         </Tabs>
       </div>

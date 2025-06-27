@@ -1,3 +1,10 @@
+export interface Technology {
+  name: string;
+  icon: string;
+  category: string;
+  color: string;
+}
+
 const coreServices = [
   {
     id: "web",
@@ -168,4 +175,151 @@ const blogPosts = [
   },
 ];
 
-export { coreServices, blogPosts };
+const technologies: Technology[] = [
+  {
+    name: "React",
+    icon: "/placeholder.svg?height=40&width=40",
+    category: "Frontend",
+    color: "#61DAFB",
+  },
+  {
+    name: "Next.js",
+    icon: "/placeholder.svg?height=40&width=40",
+    category: "Frontend",
+    color: "#000000",
+  },
+  {
+    name: "Vue.js",
+    icon: "/placeholder.svg?height=40&width=40",
+    category: "Frontend",
+    color: "#4FC08D",
+  },
+  {
+    name: "Angular",
+    icon: "/placeholder.svg?height=40&width=40",
+    category: "Frontend",
+    color: "#DD0031",
+  },
+  {
+    name: "TypeScript",
+    icon: "/placeholder.svg?height=40&width=40",
+    category: "Language",
+    color: "#3178C6",
+  },
+  {
+    name: "JavaScript",
+    icon: "/placeholder.svg?height=40&width=40",
+    category: "Language",
+    color: "#F7DF1E",
+  },
+  {
+    name: "Node.js",
+    icon: "/placeholder.svg?height=40&width=40",
+    category: "Backend",
+    color: "#339933",
+  },
+  {
+    name: "Python",
+    icon: "/placeholder.svg?height=40&width=40",
+    category: "Backend",
+    color: "#3776AB",
+  },
+  {
+    name: "Java",
+    icon: "/placeholder.svg?height=40&width=40",
+    category: "Backend",
+    color: "#ED8B00",
+  },
+  {
+    name: "Go",
+    icon: "/placeholder.svg?height=40&width=40",
+    category: "Backend",
+    color: "#00ADD8",
+  },
+  {
+    name: "React Native",
+    icon: "/placeholder.svg?height=40&width=40",
+    category: "Mobile",
+    color: "#61DAFB",
+  },
+  {
+    name: "Flutter",
+    icon: "/placeholder.svg?height=40&width=40",
+    category: "Mobile",
+    color: "#02569B",
+  },
+  {
+    name: "Swift",
+    icon: "/placeholder.svg?height=40&width=40",
+    category: "Mobile",
+    color: "#FA7343",
+  },
+  {
+    name: "Kotlin",
+    icon: "/placeholder.svg?height=40&width=40",
+    category: "Mobile",
+    color: "#7F52FF",
+  },
+  {
+    name: "PostgreSQL",
+    icon: "/placeholder.svg?height=40&width=40",
+    category: "Database",
+    color: "#336791",
+  },
+  {
+    name: "MongoDB",
+    icon: "/placeholder.svg?height=40&width=40",
+    category: "Database",
+    color: "#47A248",
+  },
+  {
+    name: "Redis",
+    icon: "/placeholder.svg?height=40&width=40",
+    category: "Database",
+    color: "#DC382D",
+  },
+  {
+    name: "MySQL",
+    icon: "/placeholder.svg?height=40&width=40",
+    category: "Database",
+    color: "#4479A1",
+  },
+  {
+    name: "AWS",
+    icon: "/placeholder.svg?height=40&width=40",
+    category: "Cloud",
+    color: "#FF9900",
+  },
+  {
+    name: "Azure",
+    icon: "/placeholder.svg?height=40&width=40",
+    category: "Cloud",
+    color: "#0078D4",
+  },
+  {
+    name: "Google Cloud",
+    icon: "/placeholder.svg?height=40&width=40",
+    category: "Cloud",
+    color: "#4285F4",
+  },
+  {
+    name: "Docker",
+    icon: "/placeholder.svg?height=40&width=40",
+    category: "DevOps",
+    color: "#2496ED",
+  },
+  {
+    name: "Kubernetes",
+    icon: "/placeholder.svg?height=40&width=40",
+    category: "DevOps",
+    color: "#326CE5",
+  },
+  {
+    name: "GitHub",
+    icon: "/placeholder.svg?height=40&width=40",
+    category: "Tools",
+    color: "#181717",
+  },
+];
+
+export { coreServices, blogPosts, technologies };

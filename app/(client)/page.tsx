@@ -6,7 +6,6 @@ import { PortfolioSection } from "@/components/section/portfolio-section";
 import { ServicesSection } from "@/components/section/service-section";
 import { ServiceShowcase } from "@/components/section/service-showcase";
 import { TechnologiesSection } from "@/components/section/technologies-section";
-import { TestimonialsSection } from "@/components/section/testimonials-section";
 import { WorkProcessSection } from "@/components/section/work-process-section";
 import { ParticlesBackground } from "@/components/ui/particles-background";
 import { Suspense } from "react";
@@ -32,7 +31,7 @@ export default async function HomePage() {
         <AboutSection />
         <TechnologiesSection />
         <WorkProcessSection />
-        {/* <PortfolioSection /> */}
+        <PortfolioSection />
         <PartnersSection />
         {/* <TestimonialsSection /> */}
         {/* <BlogSection /> */}

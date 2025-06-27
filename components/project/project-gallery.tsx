@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Eye, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "motion/react";
 import { ProjectImage, ProjectVideo } from "@/lib/projects";
@@ -50,13 +50,18 @@ export function ProjectGallery({ images, videos = [] }: ProjectGalleryProps) {
             onClick={() => openLightbox(index)}
           >
             {media.type === "image" ? (
-              <Image
-                width={200}
-                height={200}
-                src={media.data.src || "/placeholder.svg"}
-                alt={media.data.alt}
-                className="object-cover"
-              />
+              <>
+                <Image
+                  width={200}
+                  height={200}
+                  src={media.data.src || "/placeholder.svg"}
+                  alt={media.data.alt}
+                  className="object-contain w-full h-full"
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-color-1/10 hover:bg-black/20 transition-colors">
+                  <Eye className="w-10 h-10 text-white/80" />
+                </div>
+              </>
             ) : (
               <div className="relative w-full h-full">
                 <Image
@@ -67,7 +72,7 @@ export function ProjectGallery({ images, videos = [] }: ProjectGalleryProps) {
                     "/placeholder.svg?height=400&width=700&text=Video"
                   }
                   alt="Video thumbnail"
-                  className="object-cover"
+                  className="object-cover w-full h-full"
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-16 h-16 rounded-full bg-black/50 flex items-center justify-center">

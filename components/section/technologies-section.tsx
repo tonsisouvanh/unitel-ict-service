@@ -724,7 +724,7 @@ export function TechnologiesSection() {
                     ? "bg-gray-50 dark:bg-gray-700/50 z-20"
                     : "bg-white dark:bg-gray-800"
                 }`}
-                variants={itemVariants}
+                variants={itemVariants as any}
                 onMouseEnter={() => handleTechMouseEnter(tech.name)}
                 onMouseLeave={handleTechMouseLeave}
               >
